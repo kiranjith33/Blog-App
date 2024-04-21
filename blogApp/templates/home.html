@@ -1,0 +1,77 @@
+
+     {% extends "base.html" %}
+     
+     {% load  static  %}
+
+     {% block content  %}
+     
+     
+     
+     <div class="carousel">
+        <div id="carouselExampleIndicators" class="carousel slide">
+            <div class="carousel-indicators">
+              <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+              <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+              <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+            </div>
+            <div class="carousel-inner">
+              <div class="carousel-item active">
+                <img src="https://source.unsplash.com/featured?programming" height="500px" class="d-block w-100" alt="...">
+              </div>
+              <div class="carousel-item">
+                <img src="https://source.unsplash.com/featured?animals" height="500px" class="d-block w-100" alt="...">
+              </div>
+              <div class="carousel-item">
+                <img src="https://source.unsplash.com/featured?astronomy" height="500px" class="d-block w-100" alt="...">
+              </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Next</span>
+            </button>
+          </div>
+      </div>
+     {% comment %} About Section {% endcomment %}
+     <div class="container py-5" >
+          <h1 class="text-center">About</h1>
+          <p class="text-center py-5">Our mission is to provide a platform that fosters creativity, connection, and meaningful conversations. We value diversity, inclusivity, and authenticity, and we're committed to providing a safe and welcoming space for all members of our community.
+
+            Explore our diverse range of topics, from personal essays and poetry to opinion pieces and how-to guides. Discover new voices, connect with like-minded individuals, and immerse yourself in the rich tapestry of human experience.
+            
+            Whether you're here to share your story, find inspiration, or simply enjoy some great reads, we're thrilled to have you join us on this journey.</p>
+     </div>
+     <div class="blog">
+        <div class="container">
+            <h1 class="text-center py-5">Blogs</h1>
+            <div class="row mb-2">
+              {% for i in blog %}
+              <div class="col-md-6">
+                <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+                  <div class="col p-4 d-flex flex-column position-static">
+                    <strong class="d-inline-block mb-2 text-primary">{{i.title}}</strong>
+                    <h3 class="mb-0">{{i.name}}</h3>
+                    <div class="mb-1 text-muted">{{i.time}}</div>
+                    <p class="card-text mb-auto">{{i.shortDesc}}</p>
+                    <a href="{% url 'content' i.id %}" class="stretched-link">Continue reading</a>
+                  </div>
+                  <div class="col-auto d-none d-lg-block">
+                   <img src="/media/{{i.thumbnail}}" class="blogimages" height="200" width="200" alt="">
+          
+                  </div>
+                </div>
+                
+
+              </div>
+               
+              {% endfor %}  
+        </div>
+        
+     </div>
+    </div>
+     
+    
+     {% endblock  %}
